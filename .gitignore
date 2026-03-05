@@ -1,0 +1,9 @@
+QA.docx
+Steps.sh
+test.txt
+Untitled-1
+server (backup)/
+logs/
+server/logs/
+server/rag_model/models/Qwen/
+**/config.py

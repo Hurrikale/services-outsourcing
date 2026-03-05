@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学解答系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="home-link">首页</a></li>
+                <li><a href="login.html" id="login-link">登录</a></li>
+                <li><a href="register.html" id="register-link">注册</a></li>
+                <li><a href="help.html" id="help-link">帮助</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 搜索栏 -->
+    <div class="search-container">
+        <h2>数学问题解答系统</h2>
+        <input type="text" id="search" placeholder="输入问题，例如：解方程 5(x + 2) = 30">
+        <button>搜索</button>
+    </div>
+
+    <!-- 推荐栏目 -->
+    <section class="recommended-topics">
+        <h2>常见数学分支</h2>
+        <div class="topics-list">
+            <div class="topic-box">基础代数</div>
+            <div class="topic-box">几何</div>
+            <div class="topic-box">预微积分（函数、解析几何）</div>
+            <div class="topic-box">数论</div>
+            <div class="topic-box">中级代数（函数、方程）</div>
+            <div class="topic-box">代数</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 数学解答系统</p>
+    </footer>
+
+    <script>
+        // 导航栏点击切换显示内容
+        const homeLink = document.getElementById('home-link');
+        const loginLink = document.getElementById('login-link');
+        const registerLink = document.getElementById('register-link');
+        const helpLink = document.getElementById('help-link');
+
+        const homeSection = document.getElementById('home-section');
+        const loginSection = document.getElementById('login-section');
+        const registerSection = document.getElementById('register-section');
+        const helpSection = document.getElementById('help-section');
+
+        // 函数：显示指定的内容区域，隐藏其他区域
+        function showSection(sectionToShow) {
+            const sections = [homeSection, loginSection, registerSection, helpSection];
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            sectionToShow.style.display = 'block';
+        }
+
+        // 点击导航链接时显示对应内容
+        homeLink.addEventListener('click', () => showSection(homeSection));
+        loginLink.addEventListener('click', () => showSection(loginSection));
+        registerLink.addEventListener('click', () => showSection(registerSection));
+        helpLink.addEventListener('click', () => showSection(helpSection));
+
+        // 默认显示首页
+        showSection(homeSection);
+    </script>
+</body>
+</html>

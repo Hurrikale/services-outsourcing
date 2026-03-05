@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>数学问题解答系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-size: 1.2em;
+        }
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 12px;
+            font-size: 1.1em;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .switch {
+            margin-top: 12px;
+            color: #007BFF;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+    <div class="title">数学问题解答系统</div>
+    <div class="container" id="login-container">
+        <h2>登录</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <input type="email" placeholder="邮箱" id="login-email">
+        <input type="password" placeholder="密码" id="login-password">
+        <button onclick="login()">登录</button>
+        <p class="switch" onclick="toggleForm()">没有账号？注册</p>
+    </div>
+    
+    <div class="container" id="register-container" style="display: none;">
+        <h2>注册</h2>
+        <form id="register-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <label for="username">用户名：</label>
+            <input autocomplete="off" type="text" id="username" name="username" placeholder="用户名长度应在3～20个字符内" required><br>
+
+            <label for="email">邮箱：</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="captcha">验证码：</label>
+            <div class="verification-container">
+                <input type="text" id="captcha" name="captcha" required>
+                <button type="button" id="get-code">获取验证码</button>
+            </div>
+
+            <label for="password">密码：</label>
+            <input autocomplete="off" type="password" id="password" name="password" placeholder="密码长度应在6～20个字符内" required><br>
+
+            <label for="password_confirm">确认密码：</label>
+            <input type="password" id="password_confirm" name="password_confirm" required><br>
+            <!-- 确保按钮类型为 button -->
+            <button type="button" onclick="register(event)">注册</button>
+            <p class="switch" onclick="toggleForm()">已有账号？登录</p>
+        </form>
+    </div>
+
+    <script>
+        function toggleForm() {
+            document.getElementById('login-container').style.display = 
+                document.getElementById('login-container').style.display === 'none' ? 'block' : 'none';
+            document.getElementById('register-container').style.display = 
+                document.getElementById('register-container').style.display === 'none' ? 'block' : 'none';
+        }
+        
+        async function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            try {
+                const response = await fetch('/auth/login', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: JSON.stringify({ 
+                        email: email,
+                        password: password
+                    })
+                });
+                const data = await response.json();
+                if (data.code === 200) {
+                    window.location.href = "/index";
+                } else {
+                    alert(data.message || '登录失败');
+                }
+            } catch (error) {
+                console.error('登录请求失败:', error);
+                alert('登录请求失败，请稍后重试');
+            }
+        }
+        
+        
+        async function sendCode() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert('请输入邮箱地址');
+                return;
+            }
+        
+            try {
+                const response = await fetch('/auth/captcha/email', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                if (data.code === 200) {
+                    let countdown = 60;
+                    const button = $('#get-code');
+                    button.prop('disabled', true); // 改为禁用按钮而不是移除事件
+                    const timer = setInterval(() => {
+                        button.text(`${countdown}秒后重试`);
+                        countdown--;
+                        if (countdown <= 0) {
+                            clearInterval(timer);
+                            button.text('获取验证码');
+                            button.prop('disabled', false); // 重新启用按钮
+                        }
+                    }, 1000);
+                    alert('验证码已发送至您的邮箱，请查收！');
+                } else {
+                    alert(data.message || '验证码发送失败');
+                }
+            } catch (error) {
+                console.error('验证码发送失败:', error);
+                alert('验证码发送失败，请稍后重试');
+            }
+        }
+
+        $(document).ready(function () {
+            $('#get-code').on('click', sendCode);
+        });
+    
+        
+        async function register(event) {
+            // 阻止表单默认提交行为
+            event.preventDefault();
+            const csrf_token = document.querySelector('meta[name="csrf-token"]').content;
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                captcha: document.getElementById('captcha').value,
+                password: document.getElementById('password').value,
+                password_confirm: document.getElementById('password_confirm').value,
+                csrf_token: csrf_token
+            };
+
+            try {
+                const response = await fetch('/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrf_token
+                    },
+                    body: JSON.stringify(formData)
+                });
+                const data = await response.json();
+                alert(data.message);
+                if (data.code === 200) {
+                    window.location.href = "/auth/login";
+                }
+            } catch (error) {
+                console.error('注册失败:', error);
+                alert('注册请求失败，请稍后重试');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# Web Framework
+Flask==3.0.2
+Flask-SQLAlchemy==3.1.1
+Flask-Mail==0.9.1
+Flask-Migrate==4.0.5
+alembic==1.14.1
+
+# Database
+SQLAlchemy==2.0.28
+PyMySQL==1.1.0
+
+# AI/ML
+torch==2.2.1
+transformers==4.38.2
+modelscope==1.12.0
+
+# Utils
+python-dotenv==1.0.1
+email-validator==2.1.0.post1
+streamlit==1.32.0
+pymysql==1.1.0
+python-dateutil
+pandas
+wtforms
+flask_wtf
+accelerate

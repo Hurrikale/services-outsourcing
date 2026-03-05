@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 数学解答系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='jquery/jquery.3.6.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/register.js')}}"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" id="home-link">首页</a></li>
+                <li><a href="login.html" id="login-link">登录</a></li>
+                <li><a href="register.html" id="register-link">注册</a></li>
+                <li><a href="help.html" id="help-link">帮助</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="register-section">
+        <h2>注册</h2>
+        <form action="#" method="POST">
+            <label for="username">用户名：</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="email">邮箱：</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="verification-code">验证码：</label>
+            <div class="verification-container">
+                <input type="text" id="verification-code" name="verification-code">
+                <button type="button" id="get-code">获取验证码</button>
+            </div>
+
+            <label for="password">密码：</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <label for="confirm-password">确认密码：</label>
+            <input type="password" id="confirm-password" name="confirm-password" required><br>
+
+            <button type="submit">注册</button>
+        </form>
+        <p>已有账号？<a href="login.html">登录</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 数学解答系统</p>
+    </footer>
+</body>
+</html>

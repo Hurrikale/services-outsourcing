@@ -1,0 +1,519 @@
+/* 基础布局样式 */
+body {
+  font-family: Arial, sans-serif;      /* 设置页面默认字体为Arial */
+  margin: 0;                          /* 移除默认边距 */
+  padding: 0;                         /* 移除默认内边距 */
+  display: flex;                      /* 使用flex布局 */
+  height: 100vh;                      /* 设置高度为整个视口高度 */
+  background: #f9f9f9;                /* 设置背景颜色 */
+}
+
+/* 主容器样式 */
+.container {
+  display: flex;                      /* 使用flex布局 */
+  width: 100%;                        /* 宽度占满父容器 */
+  height: 100%;                       /* 高度占满父容器 */
+}
+
+/* 左侧历史聊天记录栏样式 */
+.history-container {
+  width: 250px;                       /* 设置固定宽度 */
+  background: #ededed;                /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+  padding: 20px;                      /* 设置内边距 */
+  display: flex;                      /* 使用flex布局 */
+  flex-direction: column;             /* 设置为垂直方向布局 */
+  gap: 10px;                          /* 设置子元素间距 */
+}
+
+/* 左侧历史栏中的按钮样式 */
+.history-container button {
+  padding: 10px 15px;                 /* 设置内边距 */
+  border: 1px solid #f8f5f5;          /* 设置边框 */
+  background-color: #fbfcfd;
+  border-radius: 20px;                /* 设置圆角 */
+  cursor: pointer;                    /* 设置鼠标指针样式 */
+}
+
+/* 左侧历史栏按钮悬停效果 */
+.history-container button:hover {
+  background: #e3e3e3;                /* 鼠标悬停时的背景颜色 */
+}
+
+/* 左侧历史栏标题样式 */
+.history-container h3 {
+  margin-top: 0;                      /* 移除顶部边距 */
+  background: #ededed;                /* 设置背景颜色 */
+  color: black;                       /* 设置文本颜色 */
+}
+
+/* 新增按钮容器样式 */
+.new-buttons-container {
+  margin-bottom: 10px;                /* 设置底部边距 */
+}
+
+/* 聊天记录容器样式 */
+#chatRecords {
+  margin-top: 20px;                   /* 设置顶部边距 */
+  flex-grow: 1;                       /* 允许在剩余空间中扩展 */
+  overflow-y: auto;                   /* 添加垂直滚动条 */
+  color: black;                       /* 设置文本颜色 */
+}
+
+/* 聊天记录列表样式 */
+#chatRecords ul {
+  list-style: none;                   /* 移除列表默认样式 */
+  padding: 0;                         /* 移除默认内边距 */
+  margin: 10px 0;                     /* 设置上下边距 */
+}
+
+/* 聊天记录项样式 */
+#chatRecords li {
+  padding: 10px;                      /* 设置内边距 */
+  background: #fdf9f9;                /* 设置背景颜色 */
+  margin: 5px 0;                      /* 设置上下边距 */
+  border-radius: 5px;                 /* 设置圆角 */
+  cursor: pointer;                    /* 设置鼠标指针样式 */
+  display: flex;                      /* 使用flex布局 */
+  justify-content: space-between;     /* 水平均匀分布子元素 */
+  align-items: center;                /* 垂直居中对齐子元素 */
+  color: black;                       /* 设置文本颜色 */
+}
+
+/* 聊天记录项中的输入框样式 */
+#chatRecords li input {
+  width: 100%;                        /* 宽度占满父容器 */
+  padding: 5px;                       /* 设置内边距 */
+  border: none;                       /* 移除边框 */
+  border-radius: 5px;                 /* 设置圆角 */
+  background: #3a3d45;                /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 聊天记录项悬停效果 */
+#chatRecords li:hover {
+  background: #b5b3b3;                /* 鼠标悬停时的背景颜色 */
+}
+
+/* 聊天记录项中的选项按钮样式 */
+#chatRecords li .options-btn {
+  background: transparent;            /* 设置透明背景 */
+  border: none;                       /* 移除边框 */
+  color: #fdf9f9;                     /* 设置文本颜色 */
+  cursor: pointer;                    /* 设置鼠标指针样式 */
+}
+
+/* 聊天记录项选项按钮悬停效果 */
+#chatRecords li .options-btn:hover {
+  color: white;                       /* 鼠标悬停时的文本颜色 */
+}
+
+/* 用户设置区域样式 */
+.user-settings-area {
+  margin-top: 20px;                   /* 设置顶部边距 */
+  padding-top: 10px;                  /* 设置顶部内边距 */
+  border-top: 1px solid #ccc;         /* 设置顶部边框 */
+}
+
+.user-settings-area button {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  cursor: pointer;
+  background: white;
+  color: black;
+  margin-bottom: 10px; /* 添加底部间距 */
+}
+
+/* 最后一个按钮不添加底部间距 */
+.user-settings-area button:last-child {
+  margin-bottom: 0;
+}
+
+/* 用户设置区域按钮悬停效果 */
+.user-settings-area button:hover {
+  background: #e3e3e3;                /* 鼠标悬停时的背景颜色 */
+}
+
+/* 右侧聊天界面样式 */
+.chat-container {
+  flex-grow: 1;                       /* 允许在剩余空间中扩展 */
+  display: flex;                      /* 使用flex布局 */
+  flex-direction: column;             /* 设置为垂直方向布局 */
+  background: white;                  /* 设置背景颜色 */
+  padding: 20px;                      /* 设置内边距 */
+  border-left: 1px solid #ccc;        /* 设置左侧边框 */
+}
+
+/* 导航栏样式 */
+.navbar {
+  display: flex;                      /* 使用flex布局 */
+  justify-content: space-between;     /* 水平均匀分布子元素 */
+  align-items: center;                /* 垂直居中对齐子元素 */
+  margin-bottom: 10px;                /* 设置底部边距 */
+}
+
+/* 移除原导航栏中用户设置按钮的样式 */
+.navbar .user-settings-btn {
+  display: none;                      /* 隐藏用户设置按钮 */
+}
+
+/* 聊天窗口样式 */
+#chatWindow {
+  flex-grow: 1;                       /* 允许在剩余空间中扩展 */
+  padding: 20px;                      /* 设置内边距 */
+  overflow-y: auto;                   /* 添加垂直滚动条 */
+  border: none;                       /* 移除边框 */
+}
+
+/* 聊天输入区域样式 */
+.chat-input-container {
+  display: flex;                      /* 使用flex布局 */
+  padding: 10px;                      /* 设置内边距 */
+  border-top: 1px solid #ccc;         /* 设置顶部边框 */
+}
+
+/* 聊天输入框样式 */
+#chatInput {
+  flex-grow: 1;                       /* 允许在剩余空间中扩展 */
+  padding: 10px;                      /* 设置内边距 */
+  border: 1px solid #ccc;             /* 设置边框 */
+  border-radius: 20px;                /* 设置圆角 */
+}
+
+/* 聊天输入区域按钮样式 */
+.chat-input-container button {
+  padding: 10px 15px;                 /* 设置内边距 */
+  background: white;                  /* 设置背景颜色 */
+  color: black;                       /* 设置文本颜色 */
+  border: 1px solid #ccc;             /* 设置边框 */
+  cursor: pointer;                    /* 设置鼠标指针样式 */
+  margin-left: 10px;                  /* 设置左侧边距 */
+  border-radius: 5px;                 /* 设置圆角 */
+}
+
+/* 聊天输入区域按钮悬停效果 */
+.chat-input-container button:hover {
+  background: #f0f0f0;                /* 鼠标悬停时的背景颜色 */
+}
+
+/* 欢迎消息样式 */
+.welcome-message {
+  text-align: center;                 /* 文本居中对齐 */
+  color: #888;                        /* 设置文本颜色 */
+}
+
+/* 导航栏下拉选择框和按钮样式 */
+.navbar select,
+.navbar button {
+  font-size: 16px;                    /* 设置字体大小 */
+  padding: 5px 10px;                  /* 设置内边距 */
+  background: white;                  /* 设置背景颜色 */
+  border: white;                      /* 设置边框颜色 */
+}
+
+/* 导航栏按钮悬停效果 */
+.navbar button:hover {
+  background-color: #f6f6f6;          /* 鼠标悬停时的背景颜色 */
+}
+
+/* 通用按钮样式 */
+button {
+  cursor: pointer;                    /* 设置鼠标指针样式 */
+}
+
+/* 弹出选项菜单样式 */
+.options-menu {
+  position: absolute;                 /* 设置绝对定位 */
+  background: white;                  /* 设置背景颜色 */
+  border: 1px solid #ccc;             /* 设置边框 */
+  border-radius: 5px;                 /* 设置圆角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  padding: 10px;                      /* 设置内边距 */
+  z-index: 9999;                      /* 设置层级 */
+}
+
+/* 弹出菜单按钮样式 */
+.options-menu button {
+  width: 100%;                        /* 宽度占满父容器 */
+  padding: 10px;                      /* 设置内边距 */
+  background: #6496eb;                /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+  border: none;                       /* 移除边框 */
+  cursor: pointer;                    /* 设置鼠标指针样式 */
+  margin: 5px 0;                      /* 设置上下边距 */
+  border-radius: 5px;                 /* 设置圆角 */
+}
+
+/* 弹出菜单按钮悬停效果 */
+.options-menu button:hover {
+  background: #0077cc;                /* 鼠标悬停时的背景颜色 */
+}
+
+/* 弹出菜单输入框样式 */
+.options-menu input {
+  width: 100%;                        /* 宽度占满父容器 */
+  padding: 5px;                       /* 设置内边距 */
+  margin-bottom: 5px;                 /* 设置底部边距 */
+  border: 1px solid #ccc;             /* 设置边框 */
+  border-radius: 3px;                 /* 设置圆角 */
+}
+
+/* 模型选择下拉框悬停效果 */
+#modelSelect:hover {
+  background-color: #f6f6f6;          /* 鼠标悬停时的背景颜色 */
+}
+
+/* 活跃聊天记录项样式 */
+.active-chat {
+  background-color: #d1e7fd;          /* 浅蓝色背景 */
+  font-weight: bold;                  /* 加粗字体 */
+}
+
+/* 暗夜模式整体样式 */
+body.dark-mode {
+  background-color: #121212;          /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 暗夜模式按钮样式 */
+body.dark-mode button {
+  background-color: #1e1e1e;          /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 暗夜模式输入框样式 */
+body.dark-mode input {
+  background-color: #333;             /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+  border: 1px solid white;            /* 设置边框 */
+}
+
+/* 暗夜模式聊天窗口样式 */
+body.dark-mode .chat-window {
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 暗夜模式聊天容器样式 */
+body.dark-mode .chat-container {
+  background-color: #1e1e1e;          /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+  box-shadow: 0px 4px 6px #1e1e1e;   /* 添加阴影 */
+}
+
+/* 暗夜模式历史聊天栏标题样式 */
+body.dark-mode .history-container h3 {
+  background-color: #1e1e1e;          /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 弹窗基本样式 */
+.modal {
+  display: none;                      /* 默认隐藏弹窗 */
+  position: fixed;                    /* 设置固定定位 */
+  z-index: 1;                         /* 设置层级 */
+  left: 0;                            /* 左侧对齐 */
+  top: 0;                             /* 顶部对齐 */
+  width: 100%;                        /* 宽度占满屏幕 */
+  height: 100%;                       /* 高度占满屏幕 */
+  overflow: auto;                     /* 允许滚动 */
+  background-color: rgba(0, 0, 0, 0.4); /* 设置半透明背景 */
+}
+
+/* 弹窗内容样式 */
+.modal-content {
+  background-color: #c0c1c3;          /* 设置背景颜色 */
+  margin: 15% auto;                   /* 设置边距 */
+  padding: 20px;                      /* 设置内边距 */
+  border: 1px solid #888;             /* 设置边框 */
+  width: 80%;                         /* 设置宽度 */
+}
+
+/* 暗夜模式弹窗内容样式 */
+body.dark-mode .modal-content {
+  background-color: #1e1e1e;          /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 暗夜模式历史聊天栏样式 */
+body.dark-mode .history-container {
+  background-color: #1e1e1e;          /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 暗夜模式聊天记录项样式 */
+body.dark-mode #chatRecords ul li {
+  background-color: #333;             /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 暗夜模式聊天窗口消息样式 */
+body.dark-mode .chat-window div {
+  color: white;                       /* 设置文本颜色 */
+}
+
+/* 关闭按钮样式 */
+.close {
+  color: #7e7d7d;                     /* 设置文本颜色 */
+  float: right;                       /* 右浮动 */
+  font-size: 28px;                    /* 设置字体大小 */
+  font-weight: bold;                  /* 加粗字体 */
+}
+
+/* 关闭按钮悬停和聚焦效果 */
+.close:hover,
+.close:focus {
+  color: red;                         /* 设置文本颜色 */
+  text-decoration: none;              /* 移除文本装饰 */
+  cursor: pointer;                    /* 设置鼠标指针样式 */
+}
+
+/* 暗夜模式按钮悬停效果 */
+body.dark-mode button:hover {
+  background-color: #555;             /* 鼠标悬停时的背景颜色 */
+}
+
+/* 暗夜模式历史聊天记录项悬停效果 */
+body.dark-mode .history-container ul li:hover {
+  background-color: #444;             /* 鼠标悬停时的背景颜色 */
+}
+
+/* 暗夜模式用户设置区域样式 */
+body.dark-mode .user-settings-area {
+  border-top: 1px solid #444;         /* 设置顶部边框 */
+}
+
+/* 暗夜模式用户设置区域按钮样式 */
+body.dark-mode .user-settings-area button {
+  background: #333;                   /* 设置背景颜色 */
+  color: white;                       /* 设置文本颜色 */
+  border: 1px solid #444;             /* 设置边框 */
+}
+
+/* 暗夜模式用户设置区域按钮悬停效果 */
+body.dark-mode .user-settings-area button:hover {
+  background: #444;                   /* 鼠标悬停时的背景颜色 */
+}
+
+/* 消息通用样式 */
+.message {
+  margin: 10px;                       /* 设置边距 */
+  padding: 15px;                      /* 设置内边距 */
+  border-radius: 10px;                /* 设置圆角 */
+  max-width: 80%;                     /* 设置最大宽度 */
+}
+
+/* 用户消息样式 */
+.user-message {
+  background-color: #e2f3e8;          /* 设置背景颜色 */
+  margin-left: auto;                  /* 右对齐 */
+}
+
+/* AI消息样式 */
+.ai-message {
+  background-color: rgb(226, 233, 246);            /* 设置背景颜色 */
+  margin-right: auto;                 /* 左对齐 */
+}
+
+/* 暗夜模式用户消息样式 */
+body.dark-mode .user-message {
+  background-color: #4c5852;          /* 设置背景颜色 */
+}
+
+/* 暗夜模式AI消息样式 */
+body.dark-mode .ai-message {
+  background-color: #3d444e;          /* 设置背景颜色 */
+}
+
+/* AI消息段落样式 */
+.ai-message p {
+  margin: 0;                          /* 移除边距 */
+  line-height: 1.6;                   /* 设置行高 */
+  white-space: pre-wrap;              /* 保留空白符序列，正常进行换行 */
+}
+
+/* AI消息中数学公式样式 */
+.ai-message .math-formula {
+  background-color: #fff;             /* 设置背景颜色 */
+  padding: 10px;                      /* 设置内边距 */
+  border-radius: 5px;                 /* 设置圆角 */
+  margin: 10px 0;                     /* 设置上下边距 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 添加阴影 */
+}
+
+/* AI消息中解题步骤样式 */
+.ai-message .step {
+  margin: 10px 0;                     /* 设置上下边距 */
+  padding-left: 20px;                 /* 设置左侧内边距 */
+  border-left: 3px solid #2196f3;     /* 设置左侧边框 */
+}
+
+/* AI消息中最终答案样式 */
+.ai-message .final-answer {
+  font-weight: bold;                  /* 加粗字体 */
+  color: #1976d2;                     /* 设置文本颜色 */
+  margin-top: 15px;                   /* 设置顶部边距 */
+  padding: 10px;                      /* 设置内边距 */
+  background-color: #e3f2fd;          /* 设置背景颜色 */
+  border-radius: 5px;                 /* 设置圆角 */
+}
+
+/* 思考状态指示器样式 */
+.thinking-indicator {
+  display: flex;                      /* 使用flex布局 */
+  align-items: center;                /* 垂直居中对齐子元素 */
+  gap: 10px;                          /* 设置子元素间距 */
+  margin: 10px;                       /* 设置边距 */
+  padding: 10px;                      /* 设置内边距 */
+  background-color: #f5f5f5;          /* 设置背景颜色 */
+  border-radius: 10px;                /* 设置圆角 */
+  max-width: 200px;                   /* 设置最大宽度 */
+}
+
+/* 加载旋转图标样式 */
+.spinner {
+  width: 20px;                        /* 设置宽度 */
+  height: 20px;                       /* 设置高度 */
+  border: 3px solid #f3f3f3;          /* 设置边框 */
+  border-top: 3px solid #3498db;      /* 设置顶部边框 */
+  border-radius: 50%;                 /* 设置为圆形 */
+  animation: spin 1s linear infinite; /* 添加旋转动画 */
+}
+
+/* 旋转动画定义 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }      /* 初始状态 */
+  100% { transform: rotate(360deg); }   /* 旋转360度 */
+}
+
+/* 新增：导出PDF按钮样式 */
+.message-actions {
+  display: flex;                      /* 使用flex布局 */
+  justify-content: flex-end;          /* 按钮靠右排列 */
+  margin-top: 15px;                   /* 按钮与消息内容的间距 */
+}
+
+.export-pdf-btn {
+  padding: 6px 12px;                  /* 按钮内边距 */
+  background-color: #3498db;          /* 蓝色主色调按钮 */
+  color: white;                       /* 文本颜色 */
+  border: none;                       /* 无边框 */
+  border-radius: 4px;                 /* 圆角 */
+  cursor: pointer;                    /* 鼠标指针样式 */
+  font-size: 14px;                    /* 字体大小 */
+  transition: background-color 0.2s;  /* 过渡动画 */
+}
+
+.export-pdf-btn:hover {
+  background-color: #2980b9;          /* 悬停时颜色加深 */
+}
+
+/* 新增：黑暗模式下的导出按钮样式 */
+body.dark-mode .export-pdf-btn {
+  background-color: #4a7cbc;          /* 黑暗模式下的蓝色按钮 */
+}
+
+body.dark-mode .export-pdf-btn:hover {
+  background-color: #25529a;          /* 黑暗模式下悬停颜色 */
+}

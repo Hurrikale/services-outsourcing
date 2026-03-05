@@ -1,0 +1,210 @@
+/* 通用样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* 搜索栏样式 */
+.search-container {
+    max-width: 800px; /* 更长的搜索栏 */
+    margin: 20px auto; /* 居中并添加一些外间距 */
+    padding: 10px; /* 内边距 */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 标题居中 */
+}
+
+.search-container h2 {
+    margin-bottom: 15px; /* 搜索栏标题和输入框的间距 */
+    font-size: 1.5em;
+}
+
+.search-bar {
+    display: flex; /* 使用flex布局排列输入框和按钮 */
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px; /* 设置输入框和按钮之间的间隙 */
+}
+
+.search-container input {
+    width: 95%; /* 输入框宽度更大 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #555;
+}
+
+/* 注册页面样式 */
+.register-section {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form {
+    display: block;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+p {
+    text-align: center;
+}
+
+p a {
+    text-decoration: none;
+    color: #333;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* 推荐栏目样式 */
+.recommended-topics {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.recommended-topics h2 {
+    margin-bottom: 20px;
+}
+
+.topics-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.topic-box {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+}
+
+.topic-box:hover {
+    background-color: #f0f0f0;
+}
+
+/* 验证码容器样式调整 */
+.verification-container {
+    display: flex;
+    justify-content: space - between;
+    align-items: center;
+    width: 95%;
+    margin-left: 10px;
+}
+
+.verification-container input {
+    flex: 1;
+    width: 50%;
+    margin-top: 15px;
+}
+
+.verification-container button {
+    width: 30%;
+    padding: 5px 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* background-color: #000000; */
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    cursor: pointer;
+}
