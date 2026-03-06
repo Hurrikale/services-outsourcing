@@ -1,0 +1,1 @@
+I contributed to the work related to the Flask framework and the database setup in this project. If you have any questions about this part of the project, please feel free to leave a message to notify me.
